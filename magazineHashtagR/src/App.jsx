@@ -10,24 +10,32 @@ function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [carItems, setCarItems] = useState({});
 
-  return (
-  
-   <CartContext.Provider value={{isCartOpen, setIsCartOpen, carItems, setCarItems}} >
-    <Header />
-      <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/checkout' element={<Checkout />} />
-          <Route path='/history' element={<PurchaseHistory />} />
-      </Routes>
+  /*
+  {
+  "1": 3
+  "2": 1
+  "5": 4
+  }
+  */
+  const addToCart = (productId) => {
+    // Cria uma nova cópia do objeto carItems e atualiza a quantidade do produto especificado
+    const updateCart = { 
+      ...carItems, 
+      [productId]: (carItems[productId] ?? 0) + 1 
+    };
+    setCarItems(updateCart);
+  };
 
-   </CartContext.Provider>
-  
+  return (
+    <CartContext.Provider value={{ isCartOpen, setIsCartOpen, carItems, setCarItems, addToCart }}>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/checkout' element={<Checkout />} />
+        <Route path='/history' element={<PurchaseHistory />} />
+      </Routes>
+    </CartContext.Provider>
   );
-    
 }
 
 export default App;
-
-
-
-//npm isntall react-router-dom
