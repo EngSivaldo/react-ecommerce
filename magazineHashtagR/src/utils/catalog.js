@@ -73,3 +73,11 @@ export const catalog = [
     feminine: true,
   },
 ];
+
+
+export const catalogIndexeById = catalog.reduce((acc, currentValue) => {
+  const {id} = currentValue;
+  acc[id] = currentValue;
+  return acc;
+}, {});
+

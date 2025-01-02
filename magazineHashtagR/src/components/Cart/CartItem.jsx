@@ -1,8 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark , faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { catalogIndexeById } from "../../utils/catalog";
 
 
 const CartItem = () => {
+  console.log(catalogIndexeById);
   return <article className="flex bg-stone-100 p-1 border rounded-mg relative">
     <img src="" alt="" className="h-24" />
     <button className="text-right text-l fixed absolute top-0 right-2 text-slate-950">
