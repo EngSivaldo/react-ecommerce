@@ -7,11 +7,12 @@ import { Routes, Route } from "react-router-dom";
 import { CartContext } from "./context/CartContext";
 
 function App() {
-  const [isCartOpen, setIsCartOpen] = useState(true);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [carItems, setCarItems] = useState({});
 
   return (
   
-   <CartContext.Provider value={{isCartOpen, setIsCartOpen}} >
+   <CartContext.Provider value={{isCartOpen, setIsCartOpen, carItems, setCarItems}} >
     <Header />
       <Routes>
           <Route path='/' element={<Home />} />
