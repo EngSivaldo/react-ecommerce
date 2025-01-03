@@ -11,20 +11,27 @@ function App() {
   const [cartItems, setCartItems] = useState({});
 
   const addToCart = (productId) => {
-    console.log("Adicionando produto ao carrinho:", productId);
     const updatedCart = { 
       ...cartItems, 
       [productId]: (cartItems[productId] ?? 0) + 1 
     };
-    console.log("Carrinho atualizado:", updatedCart);
     setCartItems(updatedCart);
   };
+  
+  const decreaseUnit = (productId) => {
+    const updatedCart = { 
+      ...cartItems, 
+      [productId]: (cartItems[productId] ?? 0) - 1 
+    };
+    setCartItems(updatedCart);
+  };
+  
   const toggleIsCartOpen = () => {
     setIsCartOpen(!isCartOpen);
   }
 
   return (
-    <CartContext.Provider value={{ isCartOpen, toggleIsCartOpen, cartItems, setCartItems, addToCart }}>
+    <CartContext.Provider value={{ isCartOpen, toggleIsCartOpen, cartItems, setCartItems, addToCart, decreaseUnit }}>
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
