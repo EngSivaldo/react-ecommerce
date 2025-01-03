@@ -12,7 +12,7 @@ const CartProducts = () => {
   }
 
 
-  return <section className="flex flex-col justfy-start overflow-auto gap-2">
+  return <section className="flex flex-col justfy-start overflow-auto gap-2 h-3/5">
     {cartItemsArray.map((product) => {
       return <CartItem {...product} key={`key_${product.id}`} />;
 
