@@ -6,45 +6,52 @@ import PurchaseHistory from "./pages/PurchaseHistoryPage/PurchaseHistory";
 import { Routes, Route } from "react-router-dom";
 import { CartContext } from "./context/CartContext";
 
+// Componente principal do aplicativo
 function App() {
+  // Estado para controlar se o carrinho está aberto
   const [isCartOpen, setIsCartOpen] = useState(false);
+  // Estado para armazenar os itens do carrinho
   const [cartItems, setCartItems] = useState({});
 
+  // Função para alternar o estado de abertura do carrinho
   const toggleIsCartOpen = () => {
     setIsCartOpen(!isCartOpen);
-  }
- 
-  const removeFromCart = (productId) => {
-    const carItemsCopy = { ...cartItems };
-    delete carItemsCopy[productId];
-    setCartItems(carItemsCopy);
-  }
+  };
 
+  // Função para remover um item do carrinho
+  const removeFromCart = (productId) => {
+    const cartItemsCopy = { ...cartItems };
+    delete cartItemsCopy[productId];
+    setCartItems(cartItemsCopy);
+  };
+
+  // Função para adicionar um item ao carrinho
   const addToCart = (productId) => {
     const updatedCart = { 
       ...cartItems, 
-      [productId]: (cartItems[productId] ?? 0) + 1 ,
+      [productId]: (cartItems[productId] ?? 0) + 1,
     };
     setCartItems(updatedCart);
   };
-  //funcao retira do carrinho
+
+  // Função para diminuir a quantidade de um item no carrinho
   const decreaseUnit = (productId) => {
     if (cartItems[productId] > 1) {
       const updatedCart = { 
         ...cartItems, 
-        [productId]: cartItems[productId] - 1 ,
+        [productId]: cartItems[productId] - 1,
       };
       setCartItems(updatedCart);
-
     } else {
       removeFromCart(productId);
     }
-   
   };
-  
+
   return (
-    <CartContext.Provider value={{ isCartOpen, toggleIsCartOpen, cartItems, setCartItems, addToCart, decreaseUnit , removeFromCart, }}>
+    <CartContext.Provider value={{ isCartOpen, toggleIsCartOpen, cartItems, setCartItems, addToCart, decreaseUnit, removeFromCart }}>
+      {/* Componente do cabeçalho */}
       <Header />
+      {/* Definição das rotas do aplicativo */}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/checkout' element={<Checkout />} />
