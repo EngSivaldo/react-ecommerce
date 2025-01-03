@@ -10,28 +10,40 @@ function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState({});
 
-  const addToCart = (productId) => {
-    const updatedCart = { 
-      ...cartItems, 
-      [productId]: (cartItems[productId] ?? 0) + 1 
-    };
-    setCartItems(updatedCart);
-  };
-  
-  const decreaseUnit = (productId) => {
-    const updatedCart = { 
-      ...cartItems, 
-      [productId]: (cartItems[productId] ?? 0) - 1 
-    };
-    setCartItems(updatedCart);
-  };
-  
   const toggleIsCartOpen = () => {
     setIsCartOpen(!isCartOpen);
   }
+ 
+  const removeFromCart = (productId) => {
+    const carItemsCopy = { ...cartItems };
+    delete carItemsCopy[productId];
+    setCartItems(carItemsCopy);
+  }
 
+  const addToCart = (productId) => {
+    const updatedCart = { 
+      ...cartItems, 
+      [productId]: (cartItems[productId] ?? 0) + 1 ,
+    };
+    setCartItems(updatedCart);
+  };
+  //funcao retira do carrinho
+  const decreaseUnit = (productId) => {
+    if (cartItems[productId] > 1) {
+      const updatedCart = { 
+        ...cartItems, 
+        [productId]: cartItems[productId] - 1 ,
+      };
+      setCartItems(updatedCart);
+
+    } else {
+      removeFromCart(productId);
+    }
+   
+  };
+  
   return (
-    <CartContext.Provider value={{ isCartOpen, toggleIsCartOpen, cartItems, setCartItems, addToCart, decreaseUnit }}>
+    <CartContext.Provider value={{ isCartOpen, toggleIsCartOpen, cartItems, setCartItems, addToCart, decreaseUnit , removeFromCart, }}>
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
