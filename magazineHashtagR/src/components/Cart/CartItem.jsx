@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useCartContext } from "../../context/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark , faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { catalogIndexeById } from "../../utils/catalog";
@@ -7,7 +6,7 @@ import { catalogIndexeById } from "../../utils/catalog";
 
 
 const CartItem = ({id, amount}) => {
-  const { addToCart, decreaseUnit, removeFromCart } =  useContext(CartContext);
+  const { addToCart, decreaseUnit, removeFromCart } =  useCartContext();
   const {price, name, image} = catalogIndexeById[id];
 
   return <article className="flex bg-stone-100 p-1 border rounded-mg relative">

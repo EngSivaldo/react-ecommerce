@@ -1,7 +1,9 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useContext } from "react";
 
 // Contexto do carrinho
-export const CartContext = createContext(null);
+const CartContext = createContext(null);
+
+export const useCartContext = () => useContext(CartContext);
 
 // Função para obter a quantidade de itens no carrinho
 export const getAmountOfItemsInCart = (cartItemsObj) => {

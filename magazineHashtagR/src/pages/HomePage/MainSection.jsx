@@ -1,13 +1,14 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom"
 import ProductFilters from "./productFilter"; // Ajuste para corresponder ao nome do arquivo
 import ProductsContainer from "./ProductsContainer";
 
 const MainSection = () => {
-  const [femaleProducts, setFemaleProducts] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
   return (
     <>
-      <ProductFilters setFemaleProducts={setFemaleProducts} />
-      <ProductsContainer femaleProducts={femaleProducts} />
+      <ProductFilters setSearchParams={setSearchParams} />
+      <ProductsContainer searchParams={searchParams} />
     </>
   );
 };
