@@ -14,19 +14,96 @@ const Checkout = () => {
           fieldType="text"
           fieldName="Nome"
           id="name"
-          placeholder="John"
+          placeholder="Alice"
           required
         />
-        <p className="bg-blue-700">Elemento 2</p>
-        <p className="bg-blue-700">Elemento 3</p>
-        <p className="bg-blue-700">Elemento 4</p>
+         <FormInput
+          fieldType="text"
+          fieldName="Sobrenome"
+          id="surname"
+          placeholder="Moraes"
+          required
+        />
+        <FormInput
+          fieldType="email"
+          fieldName="Email"
+          id="email"
+          placeholder="Alice@gamil.com"
+          required
+        />
+        <FormInput
+          fieldType="text"
+          fieldName="Telefone"
+          id="phone"
+          placeholder="(xx) 99999-9999"
+          required
+        />
         <p className="text-center text-sm font-bold text-slate-950 row-start-1">
           Pagamento e Entrega
         </p>
-        <p className="bg-blue-700">Elemento 5</p>
+        <FormInput
+          fieldType="text"
+          fieldName="Número do Cartão"
+          id="credit-card"
+          placeholder="9999 9999 8888 7777"
+          required
+        />
+         <div className="flex justify-center gap-3">
+            <FormInput
+             fieldType="text"
+             fieldName="CVV"
+             id="cvv"
+             placeholder="123"
+             className="w-1/2"
+             required
+                    />
+            <FormInput
+             fieldType="text"
+             fieldName="Data de Vencimento"
+             id="expiration-date"
+             placeholder="01/70"
+             className="w-1/2"
+             required
+                    />
+         </div>
+
+         <FormInput
+             fieldType="text"
+             fieldName="CEP"
+             id="postal-code"
+             placeholder="33333-999"
+             required
+                    />
+          <FormInput
+             fieldType="text"
+             fieldName="Endereço"
+             id="address"
+             placeholder="Rua brasilia"
+             required
+                    />
+           <div className="flex justify-center gap-3">
+            <FormInput
+             fieldType="text"
+             fieldName="Número do casa"
+             id="address-number"
+             placeholder="12"
+             className="w-1/2"
+             required
+                    />
+            <FormInput
+             fieldType="text"
+             fieldName="Complemento"
+             id="apt-number"
+             placeholder="103"
+             className="w-1/2"
+                    />
+         </div>
+         
         <p className="text-center text-sm font-bold text-slate-950 row-start-1">
           Seus Produtos
         </p>
+        
+        <p className="bg-blue-700">Elemento 5</p>
       </form>
     </main>
   );
