@@ -1,4 +1,5 @@
 import FormInput from "../../utils/FormInput";
+import TotalPriceCell from "../../components/Cart/TotalPriceCell";
 
 const Checkout = () => {
   return (
@@ -102,8 +103,12 @@ const Checkout = () => {
         <p className="text-center text-sm font-bold text-slate-950 row-start-1">
           Seus Produtos
         </p>
-        
-        <p className="bg-blue-700">Elemento 5</p>
+
+       <section className="row-span-4 p-2 bg-neutral-50 rounded-md">section</section>
+       <section className="row-span-1 flex flex-col gap-2">
+         <TotalPriceCell />
+         <button className="bg-slate-950 text-slate-100 rounded-md p-1 hover:bg-slate-700 text-center">Finalizar Compra</button>
+         </section>
       </form>
     </main>
   );
