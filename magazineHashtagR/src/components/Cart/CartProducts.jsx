@@ -1,5 +1,6 @@
 import { useCartContext } from "../../context/CartContext";
 import CartItem from "./CartItem";
+import SimpleCartItem from "./SimpleCartItem";
 
 
 const CartProducts = ({isHomePage = true}) => {
@@ -9,10 +10,11 @@ const CartProducts = ({isHomePage = true}) => {
     cartItemsArray.push({id: Number(itemId), amount: cartItems[itemId]})
 
   }
-  
+
   return <section className={`flex flex-col justfy-start overflow-auto gap-2 ${isHomePage ? "h-3/5" : ""}`}>
+    
     {cartItemsArray.map((product) => {
-      return <CartItem {...product} key={`key_${product.id}`} />;
+      return isHomePage ? <CartItem {...product} key={`key_${product.id}`} /> : <SimpleCartItem {...product} key={`key_${product.id}`}/>
 
    })}
   
